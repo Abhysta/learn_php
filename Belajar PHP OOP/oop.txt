@@ -1,0 +1,513 @@
+materi 1 oop
+Object Oriented Programming adalah sudut pandang bahasa pemrograman yang berkonsep “objek”
+Ada banyak sudut pandang bahasa pemrograman, namun OOP adalah yang sangat populer saat ini.
+Ada beberapa istilah yang perlu dimengerti dalam OOP, yaitu: Object dan Class
+
+Object adalah data yang berisi field / properties / attributes dan method / function / behavior
+
+Class adalah blueprint, prototype atau cetakan untuk membuat Object
+Class berisikan deklarasi semua properties dan functions yang dimiliki oleh Object
+Setiap Object selalu dibuat dari Class
+Dan sebuah Class bisa membuat Object tanpa batas
+
+materi 2 Class (class.php)
+Untuk membuat class, kita bisa menggunakan kata kunci class
+Penamaan class biasa menggunakan format CamelCase
+
+materi 3 Object  (object.php)
+Object adalah hasil instansiasi dari sebuah class
+Untuk membuat object kita bisa menggunakan kata kunci new, dan diikuti dengan nama Class dan kurung ()
+
+materi 4 properties (properties.php & object-properties.php)
+Fields / Properties / Attributes adalah data yang bisa kita sisipkan di dalam Object
+Namun sebelum kita bisa memasukkan data di fields, 
+kita harus mendeklarasikan data apa aja yang dimiliki object tersebut di dalam deklarasi class-nya
+Membuat field sama seperti membuat variable, namun ditempatkan di block class, namun diawali dengan kata kunci var
+
+Fields yang ada di object, bisa kita manipulasi. 
+Untuk memanipulasi data field, sama seperti cara pada variable
+Untuk mengakses field, kita butuh kata kunci -> setelah nama object dan diikuti nama fields nya
+
+properties type declaration
+Sama seperti di function, di properties pun, kita bisa membuat type declaration
+Ini membuat PHP otomatis mengecek tipe data yang sesuai dengan type declaration yang telah ditentukan
+Jika kita mencoba mengubah properties dengan type yang berbeda, maka otomatis akan error
+Ingat, bahwa PHP memiliki fitur type juggling, yang secara otomatis bisa mengkonversi ke tipe data lain
+Untuk menambahkan type declaration, kita bisa tambahkan setelah kata kunci var di properties
+
+default properties value
+Sama seperti variable, di properties juga kita bisa langsung mengisi value nya
+Ini mirip seperti default value, jadi jika tidak diubah di object, maka properties akan memiliki value tersebut
+
+nullable properties
+Saat kita menambah type declaration di properties atau di function argument, 
+maka secara otomatis kita tidak bisa mengirim data null ke dalam properties atau function argument tersebut
+Di PHP 7.4 dikenalkan nullable type, jadi kita bisa mengirim data null ke properties atau function arguments
+Caranya sebelum type declaration nya, kita bisa tambahkan tanda ?
+
+materi 5 function (function.php & object-function.php)
+Selain menambahkan properties, kita juga bisa menambahkan function ke object
+Cara dengan mendeklarasikan function tersebut di dalam block class
+Sama seperti function biasanya, kita juga bisa menambahkan return value dan parameter
+Untuk mengakses function tersebut, kita bisa menggunakan tanda -> dan diikuti dengan nama method nya. Sama seperti mengakses properties
+
+materi 6 this keyword (this-keyword.php & object-this.php)
+Saat kita membuat kode di dalam function di dalam class, kita bisa menggunakan kata kunci this untuk mengakses object saat ini
+Misal kadang kita butuh mengakses properties atau function lain di class yang sama
+
+materi 7 constant (constant.php & object-constant.php)
+Properties di class bisa diubah, mirip seperti variable
+Di class juga kita membuat constant, data yang tidak bisa diubah
+Di materi PHP Dasar, kita belajar untuk membuat constant itu perlu menggunakan function define()
+Namun sejak PHP 7.4, kita bisa menggunakan kata kunci const untuk membuat constant, mirip seperti variable, 
+namun tidak menggunakan karakter $
+
+//noted constant akan tetap menempel di class dan properties akan menempel di object sehingga cara mengaksesnya beda
+// yaitu dengan nama object::namaconstant
+
+materi 8 self keyword (self-keyword.php)
+Saat kita membuat object, properties yang terdapat di class akan secara otomatis dibuat per object, 
+oleh karena itu untuk mengakses properties, kita perlu menggunakan object, atau jika dari dalam object tersebut sendiri, 
+kita perlu menggunakan kata kunci this
+Sedangkan berbeda dengan constant, constant di class tidak akan dibuat per object. 
+Constant itu hidupnya di class, bukan di object, 
+oleh karena itu untuk mengaksesnya kita perlu menggunakan NamaClass::NAMA_CONSTANT
+Secara sederhana, properties akan dibuat satu per instance class (object), sedangkan constant dibuat satu per class
+Jika di dalam class (misal di function) kita ingin mengakses constant, kita perlu mengakses menggunakan NamaClass::NAMA_CONSTANT
+Namun jika di dalam class yang sama, kita bisa menggunakan kata kunci self untuk mempermudah
+
+materi 9 constructor (constructor.php)
+Saat kita membuat Object, maka kita seperti memanggil sebuah function, karena kita menggunakan kurung ()
+Di dalam class PHP, kita bisa membuat constructor, constructor adalah function  yang akan dipanggil saat pertama kali Object dibuat.
+Mirip seperti di function, kita bisa memberi parameter pada constructor
+Nama constructor di PHP haruslah __construct()
+
+materi 10 destructor (destructor.php)
+Jika constructor adalah function yang akan dipanggil ketika object dibuat
+Destructor adalah function yang akan dipanggil ketika object dihapus dari memory
+Biasanya ketika object tersebut sudah tidak lagi digunakan, atau ketika aplikasi akan mati
+Untuk membuat function destructor, kita bisa menggunakan nama function __destruct()
+Khusus untuk destructor, kita tidak boleh menambahkan function argument Dalam penggunaan sehari-hari, 
+ini misal cocok untuk menutup koneksi ke database atau menutup proses menulis ke file, 
+sehingga tidak terjadi memory leak
+
+materi 11 Inheritance (Inheritance.php)
+Inheritance atau pewarisan adalah kemampuan untuk menurunkan sebuah class ke class lain
+Dalam artian, kita bisa membuat class Parent dan class Child
+Class Child, hanya bisa punya satu class Parent, namun satu class Parent bisa punya banyak class Child
+Saat sebuah class diturunkan, maka semua properties dan function yang ada di class Parent, secara otomatis akan dimiliki oleh class Child
+Untuk melakukan pewarisan, di class Child, kita harus menggunakan kata kunci extends lalu diikuti dengan nama class parent nya.
+
+materi 12 Namespace (namespace.php & object-namespace.php)
+Saat kita membuat aplikasi, bisa dipastikan kita akan banyak sekali membuat class
+Jika class terlalu banyak, kadang akan menyulitkan kita untuk mencari atau mengklasifikasikan jenis-jenis class
+PHP memiliki fitur namespace, dimana kita bisa menyimpan class-class kita di dalam namespace
+Namespace bisa nested, dan jika kita ingin mengakses class yang terdapat di namespace, 
+kita perlu menyebutkan nama namespace nya Namespace bagus ketika kita punya beberapa class yang sama, 
+dengan menggunakan namespace nama class sama tidak akan menjadikan error di PHP
+
+membuat namespace
+Untuk membuat namespace, kita bisa menggunakan kata kunci namespace
+Jika kita ingin membuat sub namespace, kita cukup gunakan karakter \ setelah namespace sebelumnya
+
+function dan constant di namespace
+Selain class, kita juga menggunakan function dan constant di namespace
+Dan jika kita ingin menggunakan function atau constant tersebut, kita bisa menggunakannya dengan diawali dengan nama namespace nya
+
+global namespace
+Secara default saat kita membuat kode di PHP sebenarnya itu disimpan di global namespace
+Global namespace adalah namespace yang tidak memiliki nama namespace
+
+materi 13 import (import.php)
+use keyword
+Sebelumnya kita sudah tahu bahwa untuk menggunakan class, function atau constant di namespace kita perlu menyebutkan nama namespace nya di awal
+Jika terlalu sering menggunakan class, function atau constant yang sama, 
+maka terlalu banyak duplikasi dengan menyebut namespace yang sama berkali-kali
+Hal ini bisa kita hindari dengan cara mengimport class, function atau constant tersebut dengan menggunakan kata kunci use
+
+alias
+Saat kita menggunakan use, artinya kita tidak perlu lagi menggunakan nama namespace diawal class ketika kita ingin membuat class tersebut
+Namun bagaimana jika kita ternyata nama class nya sama?
+Untungnya PHP memiliki fitur yang namanya alias
+Alias adalah kemampuan membuat nama lain dari class, function atau constant yang ada
+Kita bisa menggunakan kata kunci as setelah melakukan use
+
+group use declaration
+Kadang kita butuh melakukan import banyak hal di satu namespace yang sama
+PHP memiliki fitur grup use, dimana kita bisa import beberapa class, function atau constant dalam satu perintah use
+Untuk melakukan itu, kita bisa menggunakan kurung { } 
+
+materi 14 visibility (visibility.php & object-visibility.php)
+Visibility / Access modifier adalah kemampuan properties, function dan constant dapat diakses dari mana saja
+Secara default, properties, function dan constant yang kita buat di dalam class bisa diakses dari mana saja, atau artinya dia adalah public
+Selain public, masih ada beberapa visibility lainnya
+Secara default kata kunci var untuk properties adalah sifatnya public
+Access Level
+Modifier ; Class ; Subclass ; World
+public ; Y ; Y ; Y
+protected ; Y ; Y ; N
+private ; Y ; N ; N
+
+//noted class = bisa diakses atau tidaknya dari classnya
+//noted Subclass = bisa diakses atau tidaknya dari kelas turunannya
+//noted World = bisa diakses atau tidaknya dari luar class
+
+materi 15 function overriding (overriding.php & object-overriding.php)
+Function overriding adalah kemampuan mendeklarasikan ulang function di child class, yang sudah ada di parent class
+Saat kita melakukan proses overriding tersebut, secara otomatis ketika kita membuat object dari class child, 
+function yang di class parent tidak bisa diakses lagi
+
+materi 16 parent keyword (parent-keyword.php)
+Kadang kita ingin mengakses function yang terdapat di class parent yang sudah terlanjur kita override di class child
+Untuk mengakses function milik class parent, kita bisa menggunakan kata kunci parent
+Sederhananya, parent digunakan untuk mengakses class parent
+
+//noted setelah katakunci parent tambahkan :: 
+
+materi 17 constructor overriding (constructor-overriding.php & object-constructor-overriding.php)
+Karena constructor sama seperti function, maka constructor-pun bisa kita deklarasikan ulang di class Child nya
+Sebenarnya di PHP, kita bisa meng-override function dengan arguments yang berbeda, namun sangat tidak disarankan
+Jika kita melakukan override function dengan arguments berbeda, maka PHP akan menampilkan WARNING
+Namun berbeda dengan constructor overriding, kita boleh meng-override dengan mengubah arguments nya, 
+namun direkomendasikan untuk memanggil parent constructor
+
+//noted dalam perubahan argument pada overriding function yang menjadikan error adalah jika tipe data argumentnya berbeda
+//jika sama tapi beda nama variable tidak apa-apa
+
+materi 18 polymorphism (polymorphism.php & object-polymorphism.php)
+Polymorphism berasal dari bahasa Yunani yang berarti banyak bentuk.
+Dalam OOP, Polymorphism adalah kemampuan sebuah object berubah bentuk menjadi bentuk lain
+Polymorphism erat hubungannya dengan Inheritance
+
+materi 19 type check dan casts (instanceof.php)
+Sebelumnya kita sudah tau cara melakukan konversi tipe data bukan class
+Khusus untuk tipe data object, kita tidak perlu melakukan konversi secara eksplisit
+Namun agar aman, sebelum melakukan casts, pastikan kita melakukan type check (pengecekan tipe data), 
+dengan menggunakan kata kunci instanceof
+Hasil operator instanceof adalah boolean, true jika tipe data sesuai, false jika tidak sesuai
+
+materi 20 Abstract Class (abstract.php & object-abstract.php)
+Saat kita membuat class, kita bisa menjadikan sebuah class sebagai abstract class.
+Abstract class artinya, class tersebut tidak bisa dibuat sebagai object secara langsung, hanya bisa diturunkan
+Untuk membuat sebuah class menjadi abstract, kita bisa menggunakan kata kunci abstract sebelum kata kunci class
+Sehingga Abstract Class bisa kita gunakan sebagai kontrak child class
+
+materi 21 abstract function (abstract-function.php)
+Saat kita membuat class yang abstract, kita bisa membuat abstract function juga di dalam class abstract tersebut
+Saat kita membuat sebuah abstract function, kita tidak boleh membuat block function untuk function tersebut
+Artinya, abstract function wajib di override di class child
+Abstract function tidak boleh memiliki access modifier private
+
+//noted jika ada return typenya maka di child nya juga harus sama
+
+materi 22 Getter and Setter (getter-setter.php)
+encapsulation
+Encapsulation artinya memastikan data sensitif sebuah object tersembunyi dari akses luar
+Hal ini bertujuan agar kita bisa menjaga agar data sebuah object tetap baik dan valid
+Untuk mencapai ini, biasanya kita akan membuat semua properties menggunakan access modifier private, 
+sehingga tidak bisa diakses atau diubah dari luar
+Agar bisa diubah, kita akan menyediakan function untuk mengubah dan mendapatkan properties tersebut
+
+getter and setter
+Di PHP, proses encapsulation sudah dibuat standarisasinya, dimana kita bisa menggunakan Getter dan Setter method.
+Getter adalah function yang dibuat untuk mengambil data field
+Setter ada function untuk mengubah data field
+
+getter and setter method
+Tipe Data ; Getter Method ; Setter Method
+boolean ; isXxx(): bool ; setXxx(bool value)
+lainnya ; getXxx(): tipeData ; setXxx(tipeData value)
+
+materi 23 interface (interface.php & object-interface.php)
+Sebelumnya kita sudah tahu bahwa abstract class bisa kita gunakan sebagai kontrak untuk class child nya.
+Namun sebenarnya yang lebih tepat untuk kontrak adalah Interface
+Jangan salah sangka bahwa Interface disini bukanlah User Interface
+Interface mirip seperti abstract class, yang membedakan adalah di Interface, semua method otomatis abstract, tidak memiliki block
+Di interface kita tidak boleh memiliki properties, kita hanya boleh memiliki constant 
+Untuk mewariskan interface, kita tidak menggunakan kata kunci extends, melainkan implements
+Dan berbeda dengan class, kita bisa implements lebih dari satu interface
+
+//noted untuk Inheritance nya juga bisa menggunakan extends
+//noted bisa juga untuk polymorphism
+
+materi 24 interface inheritance (interface-inheritance.php)
+Sebelumnya kita sudah tahu kalo di PHP, child class hanya bisa punya 1 class parent
+Namun berbeda dengan interface, sebuah child class bisa implement lebih dari 1 interface
+Bahkan interface pun bisa implement interface lain, bisa lebih dari 1. 
+Namun jika interface ingin mewarisi interface lain, kita menggunakan kata kunci extends, bukan implements
+
+materi 25 Trait (trait.php)
+Selain class dan interface, di PHP terdapat feature lain bernama trait
+Trait mirip dengan abstract class, kita bisa membuat konkrit function atau abstract function
+Yang membedakan adalah, di trait bisa kita tambahkan ke dalam class lebih dari satu
+Trait mirip seperti ekstension, dimana kita bisa menambahkan konkrit function ke dalam class dengan trait
+Secara sederhana trait adalah digunakan untuk menyimpan function-function yang bisa digunakan ulang di beberapa class
+Untuk menggunakan trait di class, kita bisa menggunakan kata kunci use
+
+Berbeda dengan interface, di trait, kita bisa menambahkan properties
+Dengan menambahkan properties, secara otomatis class tersebut akan memiliki properties yang ada di trait
+
+materi 26 Trait overriding (trait-overriding.php)
+trait abstract
+Selain konkrit function, di trait juga kita bisa menambahkan abstract function
+Jika terdapat abstract function di trait, maka secara otomatis function tersebut harus di override di class yang menggunakan trait tersebut
+
+trait overriding
+Jika sebuah class memiliki parent class yang memiliki function yang sama dengan function di trait, 
+maka secara otomatis trait akan meng-override function tersebut
+Namun jika kita membuat function yang sama di class nya, maka secara otomatis kita akan meng-override function di trait
+Sehingga posisinya seperti ini ParentClass =override by=> Trait =override by=> ChildClass
+
+trait visibility override
+Selain melakukan override function di class, kita juga bisa melakukan override visibility function yang terdapat di trait
+Namun untuk melakukan ini tidak perlu membuat function baru di class, kita bisa gunakan secara sederhana ketika menggunakan trait nya
+
+materi 27 trait conflict (trait-conflict.php)
+Jika kita menggunakan lebih dari satu trait, lalu terdapat function yang sama di trait tersebut
+Maka hal tersebut akan menyebabkan konflik
+Jika terjadi konflik seperti ini, kita bisa mengatasinya dengan menggunakan kata kunci insteadof
+
+
+materi 28 trait inheritance (trait-inheritance.php)
+Sebelumnya kita sudah tahu bahwa class bisa menggunakan trait lebih dari satu
+Lantas bagaimana dengan trait yang menggunakan trait lain?
+Trait bisa menggunakan trait lain, mirip seperti interface yang bisa implement interface lain
+Untuk menggunakan trait lain dari trait, penggunaannya sama seperti dengan penggunaan trait di class
+
+materi 29 final class (final-class.php)
+Kata kunci final bisa digunakan di class, dimana jika kita menggunakan kata kunci final sebelum class, 
+maka kita menandakan bahwa class tersebut tidak bisa diwariskan lagi
+Secara otomatis semua class child nya akan error
+
+materi 30 final function (final-function.php)
+Kata kunci final juga bisa digunakan di function
+Jika sebuah function kita tambahkan kata kunci final, maka artinya function tersebut tidak bisa di override lagi di class child nya
+Ini sangat cocok jika kita ingin mengunci implementasi dari sebuah method agar tidak bisa diubah lagi oleh class child nya
+
+materi 31 anonymous class (anonymous-class.php)
+Anonymous class atau class tanpa nama.
+Adalah kemampuan mendeklarasikan class, sekaligus meng-instansiasi object-nya secara langsung
+Anonymous class sangat cocok ketika kita berhadapan dengan kasus membuat implementasi interface atau abstract class sederhana, 
+tanpa harus membuat implementasi class nya
+
+constructor di anonymous class
+Anonymous class juga mendukung constructor
+Jadi kita bisa menambahkan constructor jika kita mau
+
+//noted selain constructor juga mendukung destructor dan lainnya
+
+materi 32 static keyword (static-keyword.php)
+Kata kunci static adalah keyword yang bisa kita gunakan untuk 
+membuat properties atau function di class bisa diakses secara langsung tanpa menginstansiasi class terlebih dahulu
+Namun ingat, saat kita buat static properties atau function, 
+secara otomatis hal itu tidak akan berhubungan lagi dengan class instance yang kita buat
+Untuk cara mengakses static properties dan function sama seperti mengakses constant, kita bisa menggunakan operator ::
+static function tidak bisa mengakses function biasa, karena function biasa menempel pada class instance sedangkan static function tidak
+
+materi 33 stdClass (stdClass.php)
+stdClass adalah class kosong bawaan dari PHP
+stdClass biasanya digunakan ketika kita melakukan konversi dari tipe lain menjadi tipe object
+stdClass sangat berguna ketika misal kita ingin melakukan konversi dari tipe data array ke object secara otomatis
+
+materi 34 object iteration (object-iteration.php)
+Saat kita membuat object dari sebuah class, 
+kita bisa melakukan iterasi ke semua properties yang terdapat di object tersebut menggunakan foreach
+Hal ini mempermudah kita saat ingin mengakses semua properties yang ada di object
+Secara default, hanya properties yang public yang bisa diakses oleh foreach
+
+Iterator
+Sebelumnya kita melakukan iterasi data di properties secara otomatis menggunakan foreach
+Jika kita ingin menangani hal ini secara manual, kita bisa menggunakan Iterator
+Iterator adalah interface yang digunakan untuk melakukan iterasi, 
+namun membuat Iterator secara manual lumayan cukup ribet, oleh karena itu sekarang kita akan gunakan ArrayIterator, 
+yaitu iterator yang menggunakan array sebagai data iterasi nya
+Dan agar class kita bisa di iterasi secara manual, kita bisa menggunakan interface IteratorAggregate, 
+disana kita hanya butuh meng-override function getIterator() yang mengembalikan data Iterator
+
+//noted di getIterator sekarang harus disertakan tipe data kembaliannya dan itu adalah Traversable
+
+materi 35 generator (generator.php)
+Sebelumnya kita tahu bahwa untuk membuat object yang bisa di iterasi, kita menggunakan Iterator
+Namun pembuatan Iterator secara manual sangatlah ribet
+Untungnya di PHP, terdapat fitur generator, 
+yang bisa kita gunakan untuk membuat Iterator secara otomatis hanya dengan menggunakan kata kunci yield
+
+materi 36 object cloning (object-cloning.php)
+Kadang kita ada kebutuhan untuk menduplikasi sebuah object
+Biasanya untuk melakukan hal ini, kita bisa membuat object baru, lalu menyalin semua properties di object awal ke object baru
+Untungnya PHP mendukung object cloning
+Kita bisa menggunakan perintah clone untuk membuat duplikasi object
+Secara otomatis semua properties di object awal akan di duplikasi ke object baru
+
+__clone function
+Kadang menyalin semua properties bukanlah yang kita inginkan
+Misal saja kita hanya ingin menyalin beberapa properties saja, tidak ingin semuanya
+Jika kita ingin memodifikasi cara PHP melakukan clone, kita bisa membuat function di dalam class nya dengan nama function __clone()
+Function __clone() akan dipanggil di object hasil duplikasi setelah proses duplikasi selesai
+Jadi jika kita ingin menghapus beberapa properties, bisa kita lakukan di function __clone()
+
+materi 37 comparing object (comparing-object.php)
+Sama seperti tipe data yang lain, untuk membandingkan dua buah object, kita bisa menggunakan operator == (equals) dan === (identity)
+Operator == (equals) membandingkan semua properties yang terdapat di object tersebut, 
+dan tiap properties juga akan dibandingkan menggunakan operator == (equals)
+Sedangkan operator === (identity), maka akan membandingkan apakah object identik, artinya mengacu ke object yang sama
+
+materi 38 magic function (magic-function.php)
+Magic function adalah function-function yang sudah ditentukan kegunaannya di PHP
+Kita tidak bisa membuat function tersebut, kecuali memang sudah ditentukan kegunaannya
+Sebelumnya kita sudah membahas beberapa magic function, 
+seperti __construct() sebagai constructor, __destruct() sebagai destructor, dan __clone() sebagai object cloning
+Masih banyak magic function lainnya, kita bisa melihatnya di link berikut : https://www.php.net/manual/en/language.oop5.magic.php 
+
+__toString()
+__toString() function merupakan salah satu magic function yang digunakan sebagai representasi string sebuah object
+Jika misal kita ingin membuat string dari object kita, kita bisa membuat function __toString()
+
+__invoke()
+__invoke() merupakan function yang dieksekusi ketika object yang kita buat dianggap sebagai function
+Misal ketika kita membuat object $student, lalu kita melakukan $student(), maka secara otomatis function __invoke() yang akan dieksekusi
+di invoke kita bisa mengirim argument
+
+__debugInfo()
+Sebelumnya kita sering melakukan debug variable menggunakan function var_dump()
+Function var_dump() sebenarnya memanggil function __debugInfo() 
+Jika kita ingin mengubah isi dari debug info, kita bisa membuat function __debugInfo()
+dan banyak lagi
+
+materi 39 overloading (overloading.php)
+Overloading adalah kemampuan secara dinamis membuat properties atau function
+Ini mirip meta programming di bahasa pemrograman lain seperti Ruby
+Namun ini berbeda dengan function overloading di bahasa pemrograman lain seperti Java
+Overloading ini erat kaitannya dengan magic function yang sebelumnya sudah kita bahas
+
+properties overloading
+Saat kita mengakses properties, maka secara otomatis properties akan diakses
+Namun jika ternyata properties tersebut tidak tersedia di objectnya, maka PHP tidak secara otomatis menjadikan itu error
+PHP akan melakukan fallback ke magic function
+Dengan demikian kita bisa membuat properties secara dinamis dengan memanfaatkan magic function tersebut
+Ada beberapa magic function yang bisa kita gunakan untuk properties overloading
+
+magic function properties overloading
+Magic Function ; Keterangan
+__set($name, $value) : void ; Dieksekusi ketika mengubah properties yang tidak tersedia
+__get($name) : mixed ; Dieksekusi ketika mengakses properties yang tidak tersedia
+__isset ($name ) : bool ; Dieksekusi ketika mengecek isset() atau empty() properties yang tidak tersedia
+__unset($name) : void ; Dieksekusi ketika menggunakan unset() properties yang tidak tersedia
+
+function overloading
+Saat kita mengakses function, maka secara otomatis function akan diakses
+Namun jika ternyata function tersebut tidak tersedia di objectnya, maka PHP tidak secara otomatis menjadikan itu error
+PHP akan melakukan fallback ke magic function
+Dengan demikian kita bisa membuat function secara dinamis dengan memanfaatkan magic function tersebut
+Ada beberapa magic function yang bisa kita gunakan untuk function overloading
+
+magic function
+Magic Function ; Keterangan
+__call ( $name , $arguments ) : mixed ; Dieksekusi ketika memanggil function yang tidak tersedia
+static __callStatic ( $name , $arguments ) : mixed ;  Dieksekusi ketika memanggil static function yang tidak tersedia
+
+argument dalam __call dan __callStatic akan otomatis diubah menjadi array namun tidak boleh menuliskan nya dengan ...
+
+materi 40 covariance and contravariance (covariance-contravariance.php & covariance.php & object-covariance-contravariance.php)
+covariance
+Saat kita meng override function dari parent class, 
+biasanya di child class kita akan membuat function yang sama dengan function yang di parent
+Covariance memungkinkan kita meng override return function yang di parent dengan return value yang lebih spesifik
+
+contravariance
+Sedangkan contravariance adalah memperbolehkan sebuah child class untuk membuat function 
+argument yang lebih tidak spesifik dibandingkan parent nya
+
+materi 41 date time (date-time.php)
+Biasanya dalam bahasa pemrograman sudah disediakan cara untuk memanipulasi data waktu, termasuk di PHP
+Di PHP, kita bisa menggunakan class DateTime untuk memanipulasi data waktu
+Ada banyak sekali function di class DateTime yang bisa kita gunakan untuk memanipulasi data waktu
+
+DateTime Function ; Keterangan
+setTime($hour, $minute, $second) ; Mengubah waktu DateTime
+setDate($year, $month, $day) ; Mengubah tanggal DateTime
+setTimestamp($unixTimestamp) ; Mengubah unix timestamp DateTime
+
+Date Interval
+Kadang kita hanya ingin memanipulasi waktu dan tanggal sebagian saja, misal hanya menambah 1 tahun, atau mengurai beberapa hari
+Hal ini bisa dilakukan dengan function add milik DateTime
+Namun function add tersebut menerima parameter berupa DateInterval
+Saat menggunakan DateInterval duration, kita perlu menentukan berapa banyak kita menambah interval 
+Kita bisa lihat detailnya disini : https://www.php.net/manual/en/dateinterval.construct.php 
+Untuk pembuatan duration, harus diawali dengan karakter P yang artinya period
+
+//noted gunakan invert untuk mengatur penambahan atau pengurangan = 0 untuk penambahan dan 1 untuk pengurangan
+
+date timezone
+Saat kita membuat object DateTime, 
+dia akan secara otomatis membuat waktu saat ini sesuai dengan timezone yang di setting di konfigurasi date.timezone di file php.ini
+Atau kita bisa menggunakan function setTimeZone untuk mengubah timezone DateTime
+
+format date time
+Kadang kita ingin membuat representasi string dari DateTime yang sudah kita buat
+Hal ini bisa kita lakukan menggunakan function format()
+Function format() menerima argument berupa format string, ini bisa kita gunakan untuk memanipulasi cara kita menampilkan string format waktu
+Untuk detailnya kita bisa lihat di halaman dokumentasi resminya
+https://www.php.net/manual/en/datetime.format.php 
+
+parse date time
+Selain format DateTime menjadi string, di PHP juga kita bisa melakukan hal sebaliknya, 
+yaitu memparsing string menjadi DateTime sesuai dengan format yang kita mau
+Untuk melakukan itu, kita bisa menggunakan static function createFromFormat() dari class DateTime
+
+materi 42 Exception (exception.php)
+Saat kita membuat aplikasi, kita tidak akan terhindar dengan yang namanya error
+Di PHP, error direpresentasikan dengan istilah exception, dan semua direpresentasikan dalam bentuk class exception
+Kita bisa menggunakan class exception sendiri, atau menggunakan yang sudah disediakan oleh PHP
+Jika kita ingin membuat exception, maka kita harus membuat class yang implement interface Throwable atau turunan-turunannya
+
+membuat exception
+Exception biasanya terjadi di function
+Di dalam kode program kita, untuk membuat exception kita cukup menggunakan kata kunci throw, diikuti dengan object exception nya
+
+try catch
+Saat kita memanggil sebuah function yang bisa menyebabkan exception, maka kita disarankan menggunakan try-catch expression di PHP
+Ini gunanya agar kita bisa menangkap exception yang terjadi, karena jika tidak ditangkap, 
+lalu terjadi exception, maka secara otomatis program kita akan berhenti
+Cara menggunakan try-catch expression di PHP sangat mudah, di block try, 
+kita tinggal panggil method yang bisa menyebabkan exception, dan di block catch, kita bisa melakukan sesuatu jika terjadi exception
+
+//catch juga bisa dilakukan beberapa kali
+
+finally keyword
+Dalam try-catch, kita bisa menambahkan block finally
+Block finally ini adalah block dimana akan selalu dieksekusi baik terjadi exception ataupun tidak
+Ini sangat cocok ketika kita ingin melakukan sesuatu, tidak peduli sukses ataupun gagal, 
+misal di block try kita ingin membaca file, di block catch kita akan tangkap jika terjadi error, 
+dan di block finally error ataupun sukses membaca file, kita wajib menutup koneksi ke file tersebut, biar tidak menggantung di memory
+
+debug exception
+Exception di PHP memiliki sebuah function bernama getTrace()
+Function getTrace() berisikan informasi dari exception yang terjadi, seperti lokasi file, 
+baris ke berapa, function mana sampai argumenty yang dikirim di function tersebut apa
+Ini sangat cocok untuk kita jika ingin mendebug ketika terjadi exception
+
+materi 43 regex (regex.php)
+PHP mendukung regular expression yang kompatibel dengan bahasa pemrograman Perl
+Regular expression merupakan fitur yang digunakan untuk melakukan pencarian di string menggunakan pola tertentu
+Materi ini sebenarnya materi yang sangat panjang, sehingga disini kita akan bahas sedikit pengenalannya
+Untuk pembuatan pattern di regular expression, detailnya bisa dibaca disini : https://www.php.net/manual/en/pcre.pattern.php 
+
+Function Regular Expression ; Keterangan
+preg_match ($pattern ,$subject)
+preg_match_all ($pattern ,$subject) ; Digunakan untuk mencari match pattern
+preg_replace ( $pattern , $replacement, $subject) ; Digunakan untuk mereplace semua pattern dengan replacement
+preg_split ( $pattern , $subject) ; Digunakan untuk memotong dengan pattern menjadi array
+
+materi 44 reflection (reflection.php)
+Reflection adalah membaca struktur kode pada saat aplikasi sedang berjalan
+Reflection adalah materi yang sangat panjang dan banyak, sehingga disini kita hanya akan membahas perkenalannya saja
+Reflection adalah fitur yang biasanya digunakan saat kita membuat framework
+https://www.php.net/manual/en/book.reflection.php 
+
+studi kasus membuat validation framework
+Sekarang kita akan coba melakukan studi kasus menggunakan Reflection
+Kita akan membuat validation framework menggunakan reflection
+Validation framework nya cukup sederhana, kita hanya akan mengecek apakah properties bernilai null atau tidak, 
+kalo null atau belum di set, kita akan throw ValidationException
+Tanpa reflection, biasanya untuk melakukan hal ini, kita butuh pengecekan secara manual
