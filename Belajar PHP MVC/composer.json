@@ -1,0 +1,16 @@
+{
+    "name": "abhysta/belajar-mvc-php",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Abhysta\\BelajarMvcPhp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "M. Abhysta Huda A",
+            "email": "abhystahuda123@gmail.com"
+        }
+    ],
+    "require": {}
+}
