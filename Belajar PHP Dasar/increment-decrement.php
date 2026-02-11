@@ -1,0 +1,13 @@
+<?php
+
+$a = 10;
+$b = ++$a;
+
+var_dump($b);
+var_dump($a);
+
+$x = 10;
+$y = $x++;
+
+var_dump($y);
+var_dump($x);
