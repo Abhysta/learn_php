@@ -1,0 +1,43 @@
+1. Named Argument (named-argument.php)
+
+Biasanya saat kita memanggil function, maka kita harus memasukkan argument atau parameter sesuai dengan posisinya
+Dengan kemampuan named argument, kita bisa memasukkan argument atau parameter tanpa harus mengikuti posisi nya
+Namun penggunaan named argument harus disebutkan nama argument atau parameter nya
+Named argument juga menjadikan kode program mudah dibaca ketika memanggil function yang memiliki argument yang sangat banyak
+https://wiki.php.net/rfc/named_params 
+
+2. atrributes (attributes.php)
+
+Attributes adalah menambahkan metadata terhadap kode program yang kita buat.
+Fitur ini adalah fitur yang sangat baru sekali di PHP, dan bisa memungkinkan fitur ini bakal diadopsi sangat banyak oleh framework-framework di PHP di masa yang akan datang
+Fitur ini jika di bahasa pemrograman seperti Java bernama Annotation, Attributes di C# atau Decorator di Python dan JavaScript
+https://www.php.net/manual/en/language.attributes.php 
+https://wiki.php.net/rfc/attributes_v2 
+
+menggunakan atrributes
+Attribute bisa kita gunakan di berbagai tempat, seperti di Class, Function, Method, Property, Class Constant dan Parameter
+Untuk menggunakan Attribute, kita cukup gunakan tanda #[NamaAttribute] di target yang kita tentukan
+
+atrributes target
+Secara default, attribute bisa digunakan di semua target (class, function, method, property, dan lain-lain)
+Jika kita ingin membatasi hanya bisa digunakan di target tertentu, kita bisa tambahkan informasinya ketika membaut class attribute
+
+atrributes class
+Attribute class  adalah class biasa, kita bisa menambahkan property, function / method dan constructor jika kita mau
+Ini cocok ketika kita butuh menambahkan informasi tambahan di attribute class
+
+3. constructor property promotion (constructor-property-promotion.php)
+
+Kadang kita sering sekali membuat property sekaligus mengisi property tersebut menggunakan constructor
+Sekarang kita bisa otomatis langsung membuat property dengan via constructor
+Fitur ini mirip sekali di bahasa pemrograman seperti Kotlin dan TypeScript
+https://wiki.php.net/rfc/constructor_promotion 
+
+4. Union Type (union-type.php)
+
+PHP adalah bahasa pemrograman yang dynamic
+Kita tahu sebenarnya saat membuat variabel, parameter, argument, return value, sebenarnya di PHP kita tidak wajib menyebutkan tipe datanya, dan PHP bisa berubah-ubah tipe data
+Saat kita tambahkan tipe data, maka secara otomatis PHP akan memastikan tipe data tersebut harus sesuai dengan tipe data yang sudah kita definisikan
+Di PHP 8, ada fitur Union Types, dimana kita bisa menambahkan lebih dari satu tipe data ke property, argument, parameter, atau return value
+Penggunaan Union Types bisa menggunakan tanpa | diikuti dengan tipe data selanjutnya
+https://wiki.php.net/rfc/union_types_v2 
